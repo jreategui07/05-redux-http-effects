@@ -9,7 +9,7 @@ export const usuariosInitialState: UsuarioState = {
     error: []
 };
 
-const _counterReducer = createReducer(usuariosInitialState,
+const _usuariosReducer = createReducer(usuariosInitialState,
     on(cargarUsuarios, state => ({ ...state, loading: true })),
     on(cargarUsuariosSuccess, (state, { usuarios }) => ({
         ...state,
@@ -25,6 +25,6 @@ const _counterReducer = createReducer(usuariosInitialState,
     })),
 );
 
-export function counterReducer(state, action) {
-    return _counterReducer(state, action);
+export function usuariosReducer(state, action) {
+    return _usuariosReducer(state, action);
 }
