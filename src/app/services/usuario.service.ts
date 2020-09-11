@@ -7,14 +7,14 @@ import { map } from 'rxjs/operators';
 })
 export class UsuarioService {
 
-  private url = 'https://reqres.in/apiasdsad';
+  private url = 'https://reqres.in/api';
 
   constructor(
     private http: HttpClient
   ) { }
 
   getUsers() {
-    return this.http.get(`${this.url}/users?per_page=6`).pipe(
+    return this.http.get(`${this.url}/users?per_page=6&delay=3`).pipe(
       map((data: any) => data.data)
     );
   }
