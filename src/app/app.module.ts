@@ -10,6 +10,8 @@ import { SharedModule } from './shared/shared.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { appReducers } from '../store/app.reducer';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { UsuariosEffect } from '../store/effects/usuarios.effects';
 
 @NgModule({
   declarations: [
@@ -22,10 +24,11 @@ import { environment } from '../environments/environment';
     SharedModule,
     UsuariosModule,
     StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([UsuariosEffect]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
-    })
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
