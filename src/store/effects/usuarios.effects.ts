@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { mergeMap, tap, map } from 'rxjs/operators';
+import { mergeMap, tap, map, catchError } from 'rxjs/operators';
 import * as usuasriosActions from '../actions/usuasrios.actions';
 import { UsuarioService } from '../../app/services/usuario.service';
+import { of } from 'rxjs';
 
 @Injectable()
 export class UsuariosEffect {
@@ -19,7 +20,10 @@ export class UsuariosEffect {
       mergeMap( // mergeMap nos permite ejecutar un nuevo observable y retornalo mezclado con el observable anterior
         () => this.usuarioService.getUsers().pipe( // llamamos al servicio
           // tap(data => console.log('get users effect', data))
-          map(users => usuasriosActions.cargarUsuariosSuccess({ usuarios: users })) // una vez obtenida la data disparamos la acción success
+          // una vez obtenida la data disparamos la acción success
+          map(users => usuasriosActions.cargarUsuariosSuccess({ usuarios: users })),
+          // usamos "of" para retornar el error como observable
+          catchError(err => of(usuasriosActions.cargarUsuariosError({ payload: err })))
         )
       ),
     )
