@@ -1,8 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import { cargarUsuarios, cargarUsuariosSuccess, cargarUsuariosError } from '../actions';
-import { UsuarioState } from '../states';
+import { UsuariosState } from '../states';
 
-export const usuariosInitialState: UsuarioState = {
+export const usuariosInitialState: UsuariosState = {
     users: [],
     loaded: false,
     loading: false,

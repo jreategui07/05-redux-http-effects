@@ -1,1 +1,2 @@
-export * from './usuasrios.actions';
+export * from './usuarios.actions';
+export * from './usuario.actions';

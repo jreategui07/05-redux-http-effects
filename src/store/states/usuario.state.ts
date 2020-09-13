@@ -1,8 +1,9 @@
 import { Usuario } from '../../app/models/usuario.model';
 
 export interface UsuarioState {
-  users: Usuario[];
-  loaded: boolean;
-  loading: boolean;
-  error: any;
+    id: string;
+    user: Usuario;
+    loaded: boolean;
+    loading: boolean;
+    error: any;
 }
