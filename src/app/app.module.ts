@@ -11,7 +11,8 @@ import { UsuariosModule } from './usuarios/usuarios.module';
 import { appReducers } from '../store/app.reducer';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { UsuariosEffect } from '../store/effects/usuarios.effects';
+
+import { EffectsArray } from '../store/effects/index';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { UsuariosEffect } from '../store/effects/usuarios.effects';
     SharedModule,
     UsuariosModule,
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([UsuariosEffect]),
+    EffectsModule.forRoot(EffectsArray),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production

@@ -13,7 +13,7 @@ export class UsuariosEffect {
     private usuarioService: UsuarioService
   ) { }
 
-  cargarUsuario$ = createEffect(
+  cargarUsuarios$ = createEffect(
     () => this.actions$.pipe(
       ofType(usuasriosActions.cargarUsuarios), // filtramos solo el action "cargarUsuarios"
       // tap(data => console.log('effect tap', data)), // para visualizar como está viajando la data
