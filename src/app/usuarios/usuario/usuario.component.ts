@@ -14,6 +14,8 @@ import { Usuario } from '../../models/usuario.model';
 export class UsuarioComponent implements OnInit {
 
   usuario: Usuario;
+  loading = false;
+  error: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,6 +26,8 @@ export class UsuarioComponent implements OnInit {
 
     this.store.select('usuario').subscribe(({ user, loading, error }) => {
       this.usuario = user;
+      this.loading = loading;
+      this.error = error;
     });
 
     this.route.params.subscribe(({ id }) => {

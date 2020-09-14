@@ -14,13 +14,16 @@ const _usuarioReducer = createReducer(usuarioInitialState,
   on(cargarUsuario, (state, { id }) => ({
     ...state,
     loading: true,
-    id
+    id,
+    user: null,
+    error: []
   })),
   on(cargarUsuarioSuccess, (state, { usuario }) => ({
     ...state,
     loading: false,
     loaded: true,
-    user: { ...usuario }
+    user: { ...usuario },
+    error: []
   })),
   on(cargarUsuarioError, (state, { payload }) => ({
     ...state,
@@ -30,7 +33,8 @@ const _usuarioReducer = createReducer(usuarioInitialState,
       url: payload.url,
       name: payload.name,
       message: payload.message,
-    }
+    },
+    user: null
   })),
 );
 
